@@ -1,0 +1,3 @@
+# Eventzee Documentation
+
+Coming soon!
