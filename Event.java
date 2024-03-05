@@ -3,6 +3,7 @@ import java.time.LocalDateTime;
 //import java.util.List;
 
 public class Event implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String name;
     private String address;
     private EventCategory category;
@@ -16,6 +17,12 @@ public class Event implements Serializable {
         this.category = category;
         this.dateTime = dateTime;
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Event: " + name + ", Category: " + category + ", Date: " + dateTime + ", Address: " + address
+                + ", Description: " + description;
     }
 
     public void getEventDetails() {

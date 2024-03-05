@@ -36,7 +36,7 @@ public class ConsoleUI {
                     addNewEvent(input, eventManager);
                     break;
                 case 3:
-                    // see current events
+                    eventManager.getEvents();
                     break;
                 case 4:
                     // see upcoming events

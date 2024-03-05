@@ -14,6 +14,18 @@ public class EventManager {
         saveEventsToFile("events.data");
     }
 
+    public void getEvents() {
+        loadEventsFromFile("events.data");
+        if (events.isEmpty()) {
+            System.out.println("No events available");
+        } else {
+            System.out.println("List of events:");
+            for (Event event : events) {
+                System.out.println(event);
+            }
+        }
+    }
+
     public void saveEventsToFile(String fileName) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) {
             oos.writeObject(events);
