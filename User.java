@@ -19,7 +19,7 @@ public class User {
     }
 
     // Methods
-    public String register(String name, String email, String password, String cpf, String address) {
+    public void register(String name, String email, String password, String cpf, String address) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -27,7 +27,7 @@ public class User {
         this.address = address;
 
         saveUserDataToFile();
-        return "User registered successfully";
+        System.out.println("User registered successfully!");
     }
 
     public String confirmAttendance(Event event) {
