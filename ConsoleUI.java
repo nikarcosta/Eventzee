@@ -9,8 +9,9 @@ public class ConsoleUI {
         System.out.println("Choose one of the options below to proceed:");
         System.out.println("1-Add User\n2-Add Event");
         System.out.println("3-See Current Events\n4-See Upcoming Events");
-        System.out.println("5-See Past Events\n6-Register in the event");
-        System.out.println("7-Quit the Event\n8-Quit app");
+        System.out.println("5-See event details\n6-See Past Events");
+        System.out.println("7-Register in the event\n8-Quit the Event");
+        System.out.println("9-Quit app");
 
         Scanner input = new Scanner(System.in);
 
@@ -44,12 +45,15 @@ public class ConsoleUI {
                     // see past events
                     break;
                 case 6:
-                    // register in the event
+                    // see event details
                     break;
                 case 7:
-                    // quit event
+                    // register in the event
                     break;
                 case 8:
+                    // quit event
+                    break;
+                case 9:
                     System.out.println("Exiting the application. Goodbye!");
                     System.exit(0);
                     break;
@@ -58,7 +62,7 @@ public class ConsoleUI {
                     System.out.println("Invalid input. Please choose a valid option.");
                     break;
             }
-        } while (menuOption != 8);
+        } while (menuOption != 9);
 
         input.close();
     }
