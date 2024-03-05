@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.time.LocalDateTime;
 
 public class ConsoleUI {
 
@@ -20,6 +21,7 @@ public class ConsoleUI {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        EventManager eventManager = new EventManager();
 
         int menuOption;
         do {
@@ -27,26 +29,10 @@ public class ConsoleUI {
 
             switch (menuOption) {
                 case 1:
-                    System.out.println("Let's add a new user!");
-                    System.out.println("Enter the full name:");
-                    String name = input.nextLine();
-                    System.out.println("Enter email:");
-                    String email = input.nextLine();
-                    System.out.println("Enter password:");
-                    String password = input.nextLine();
-                    System.out.println("Enter cpf:");
-                    String cpf = input.nextLine();
-                    System.out.println("Enter address:");
-                    String address = input.nextLine();
-
-                    // Create a new User object with provided details
-                    User newUser = new User(name, email, password, cpf, address);
-                    newUser.register(name, email, password, cpf, address);
-
+                    addNewUser(input);
                     break;
-
                 case 2:
-                    // add event
+                    addNewEvent(input, eventManager);
                     break;
                 case 3:
                     // see current events
@@ -75,5 +61,41 @@ public class ConsoleUI {
         } while (menuOption != 8);
 
         input.close();
+    }
+
+    private static void addNewUser(Scanner input) {
+        System.out.println("Let's add a new user!");
+        System.out.println("Enter the full name:");
+        String name = input.nextLine();
+        System.out.println("Enter email:");
+        String email = input.nextLine();
+        System.out.println("Enter password:");
+        String password = input.nextLine();
+        System.out.println("Enter cpf:");
+        String cpf = input.nextLine();
+        System.out.println("Enter address:");
+        String address = input.nextLine();
+
+        User newUser = new User(name, email, password, cpf, address);
+        newUser.register(name, email, password, cpf, address);
+    }
+
+    private static void addNewEvent(Scanner input, EventManager eventManager) {
+        System.out.println("Let's add a new Event!");
+        System.out.println("Enter the name of event:");
+        String eventName = input.nextLine();
+        System.out.println("Enter address of the event:");
+        String eventAddress = input.nextLine();
+        System.out.println("Enter category of the event (PARTY, SPORT_EVENT, CONCERT, OTHER):");
+        String categoryInput = input.nextLine().toUpperCase();
+        EventCategory category = EventCategory.valueOf(categoryInput);
+        System.out.println("Enter date and time of the event (YYYY-MM-DDTHH:MM):");
+        String dateTimeInput = input.nextLine();
+        LocalDateTime dateTime = LocalDateTime.parse(dateTimeInput);
+        System.out.println("Enter description of the event:");
+        String eventDescription = input.nextLine();
+
+        Event newEvent = new Event(eventName, eventAddress, category, dateTime, eventDescription);
+        eventManager.addEvent(newEvent);
     }
 }
