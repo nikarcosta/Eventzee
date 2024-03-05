@@ -64,7 +64,8 @@ public class ConsoleUI {
                     // quit event
                     break;
                 case 8:
-                    // quit the app
+                    System.out.println("Exiting the application. Goodbye!");
+                    System.exit(0);
                     break;
 
                 default:
